@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <h2>List of Employees</h2>
+  <a class="fa fa-plus fa-lg mt-2 mb-2" routerLink="employee/add/0"></a>
+  <table class="table">
+    <thead>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.phone }}</td>
+        <td>
+          <a
+            class="fa fa-pencil-square-o fa-lg"
+            aria-hidden="true"
+            [routerLink]="['employee/edit', employee.id]"
+          ></a>
+          |
+          <a (click)="onDelete(employee.id)"
+            ><span
+              class="fa fa-trash fa-lg"
+              aria-hidden="true"
+              style="color: red;"
+            ></span
+          ></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
